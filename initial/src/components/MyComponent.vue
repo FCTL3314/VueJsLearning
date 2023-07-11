@@ -1,15 +1,10 @@
 <template>
   <div class="root">
-    <h1>Поиск по имени:</h1>
-    <input type="text" @input="query = $event.target.value">
-    <p>
-      Всего имён: {{ names.length }}, Совпадений: {{ filterNames.length }}.
-    </p>
-    <ul>
-      <li v-for="(name, index) in filterNames" :key="name">
-        {{ index }}. {{ name }}
-      </li>
-    </ul>
+    <img width="640" :class="imageFilters" :style="imageRotation" src="../assets/nature_image.jpg" alt="nature_image">
+    <button @click="imageFilters.sepia = !imageFilters.sepia">Sepia</button>
+    <button @click="imageFilters.border = !imageFilters.border">Border</button>
+    <input :min="imageFilters.rotation.minDeg" :max="imageFilters.rotation.maxDeg" type="range" @input="imageFilters.rotation.current = $event.target.value">
+    <span>{{ imageFilters.rotation.current }}</span>
   </div>
 </template>
 
@@ -18,14 +13,37 @@ export default {
   name: 'MyComponent',
   data() {
     return {
-      query: '',
-      names: ['Nikita', 'Kirill', 'Stanislav', 'Artem'],
+      imageFilters: {
+        sepia: false,
+        border: false,
+        rotation: {
+          maxDeg: 360,
+          minDeg: 0,
+          current: 0,
+        }
+      },
     }
   },
   computed: {
-    filterNames() {
-      return this.names.filter(name => name.toLowerCase().includes(this.query.toLowerCase()))
+    imageRotation() {
+      return {
+        rotate: `${this.imageFilters.rotation.current}deg`
+      }
     }
-  },
+  }
 }
 </script>
+
+<style>
+img {
+  transition: 0.2s ease;
+}
+
+img.sepia {
+  filter: sepia(100%);
+}
+
+img.border {
+  border: 5px dashed #464646;
+}
+</style>
