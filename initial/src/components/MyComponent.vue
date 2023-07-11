@@ -1,33 +1,31 @@
 <template>
   <div class="root">
-    <label>
-      Выберите кол-во продуктов:
-      <button type="button" v-on:click="increaseNumber">+</button>
-      <input type="number" min="1" max="10" :value="number">
-      <button type="button" v-on:click="decreaseNumber">-</button>
-    </label>
+    <h1>Поиск по имени:</h1>
+    <input type="text" @input="query = $event.target.value">
+    <p>
+      Всего имён: {{ names.length }}, Совпадений: {{ filterNames.length }}.
+    </p>
+    <ul>
+      <li v-for="(name, index) in filterNames" :key="name">
+        {{ index }}. {{ name }}
+      </li>
+    </ul>
   </div>
 </template>
 
 <script>
-  export default {
-    name: 'MyComponent',
-    data() {
-      return {
-        number: 1,
-      }
-    },
-    methods: {
-      increaseNumber() {
-        if (this.number < 10) {
-          this.number += 1
-        }
-      },
-      decreaseNumber() {
-        if (this.number > 1) {
-          this.number -= 1
-        }
-      },
+export default {
+  name: 'MyComponent',
+  data() {
+    return {
+      query: '',
+      names: ['Nikita', 'Kirill', 'Stanislav', 'Artem'],
     }
-  }
+  },
+  computed: {
+    filterNames() {
+      return this.names.filter(name => name.toLowerCase().includes(this.query.toLowerCase()))
+    }
+  },
+}
 </script>
