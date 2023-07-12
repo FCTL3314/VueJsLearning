@@ -1,40 +1,34 @@
-<script>
-import RecipeCard from './RecipeCard.vue'
-import MyInput from './MyInput.vue'
+<script setup>
+import RecipeCard from './RecipeCard.vue';
+import MyInput from './MyInput.vue';
+import {ref} from 'vue';
 
-export default {
-  name: 'RecipeList',
-  components: {RecipeCard, MyInput},
-  data() {
-    return {
-      recipes: [
-        {
-          title: 'Strawberry cake',
-          imgUrl: 'https://special-recipe.space/media/recipe_images/strawberry-cheesecake.jpg',
-          description: 'Dessert with delicious creamy cheesecake & fresh strawberry topping.',
-          cookingTime: '13 hours 40 minutes.',
-        },
-        {
-          title: 'Strawberry cake',
-          imgUrl: 'https://special-recipe.space/media/recipe_images/strawberry-cheesecake.jpg',
-          description: 'Dessert with delicious creamy cheesecake & fresh strawberry topping.',
-          cookingTime: '15 hours 40 minutes.',
-        },
-        {
-          title: 'Strawberry cake',
-          imgUrl: 'https://special-recipe.space/media/recipe_images/strawberry-cheesecake.jpg',
-          description: 'Dessert with delicious creamy cheesecake & fresh strawberry topping.',
-          cookingTime: '13 hours 40 minutes.',
-        },
-      ],
-      searchQuery: '',
-    }
-  },
-  methods: {
-    addToBasket(index) {
-      console.log(index)
-    }
-  },
+let searchQuery = ref(0);
+const recipes = ref(
+    [
+      {
+        title: 'Strawberry cake',
+        imgUrl: 'https://special-recipe.space/media/recipe_images/strawberry-cheesecake.jpg',
+        description: 'Dessert with delicious creamy cheesecake & fresh strawberry topping.',
+        cookingTime: '13 hours 40 minutes.',
+      },
+      {
+        title: 'Strawberry cake',
+        imgUrl: 'https://special-recipe.space/media/recipe_images/strawberry-cheesecake.jpg',
+        description: 'Dessert with delicious creamy cheesecake & fresh strawberry topping.',
+        cookingTime: '15 hours 40 minutes.',
+      },
+      {
+        title: 'Strawberry cake',
+        imgUrl: 'https://special-recipe.space/media/recipe_images/strawberry-cheesecake.jpg',
+        description: 'Dessert with delicious creamy cheesecake & fresh strawberry topping.',
+        cookingTime: '13 hours 40 minutes.',
+      },
+    ],
+)
+
+const addToBasket = (index) => {
+  console.log(index)
 }
 </script>
 

@@ -1,35 +1,35 @@
-<script>
-export default {
-  name: 'RecipeCard',
-  props: {
-    title: {
-      type: String,
-      validator(value) {
-        return value.length < 50;
-      }
+<script setup>
+import {defineProps} from 'vue';
+
+const props = defineProps(
+    {
+      title: {
+        type: String,
+        validator(value) {
+          return value.length < 50;
+        }
+      },
+      imgUrl: String,
+      description: String,
+      cookingTime: {
+        type: String,
+        default: 'No data',
+      },
     },
-    imgUrl: String,
-    description: String,
-    cookingTime: {
-      type: String,
-      default: 'No data',
-    },
-  },
-  methods: {
-    addToBasket() {
-      this.$emit('addToBasket')
-    },
-  }
+)
+
+const addToBasket = () => {
+  this.$emit('addToBasket')
 }
 </script>
 
 <template>
   <div class="recipe-card">
-    <img :src="imgUrl" alt="recipe-img" width="300">
+    <img :src="props.imgUrl" alt="recipe-img" width="300">
     <div class="product-card__info">
-      <h2>{{ title }}</h2>
-      <p class="description">{{ description }}</p>
-      <p class="cooking-time">{{ cookingTime }}</p>
+      <h2>{{ props.title }}</h2>
+      <p class="description">{{ props.description }}</p>
+      <p class="cooking-time">{{ props.cookingTime }}</p>
       <button class="recipe-button" type="button" @click="addToBasket">Сохранить</button>
     </div>
   </div>

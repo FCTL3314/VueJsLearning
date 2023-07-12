@@ -2,13 +2,6 @@
   <recipe-list/>
 </template>
 
-<script>
+<script setup>
 import RecipeList from './components/RecipeList.vue'
-
-export default {
-  name: 'App',
-  components: {
-    RecipeList
-  }
-}
 </script>

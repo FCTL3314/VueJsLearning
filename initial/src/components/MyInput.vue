@@ -1,11 +1,16 @@
-<script>
-export default {
-  props: ['modelValue'],
-}
+<script setup>
+import {defineProps} from 'vue';
+
+defineProps(['modelValue'])
 </script>
 
 <template>
-  <input type="text" class="search" :value="modelValue" @input="$emit('update:modelValue', $event.target.value)"/>
+  <input
+      type="text"
+      class="search"
+      :value="modelValue"
+      @input="$emit('update:modelValue', $event.target.value)"
+  />
 </template>
 
 <style scoped>
