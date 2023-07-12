@@ -1,14 +1,14 @@
 <template>
-  <my-component/>
+  <recipe-list/>
 </template>
 
 <script>
-import MyComponent from './components/MyComponent.vue'
+import RecipeList from './components/RecipeList.vue'
 
 export default {
   name: 'App',
   components: {
-    MyComponent
+    RecipeList
   }
 }
 </script>
