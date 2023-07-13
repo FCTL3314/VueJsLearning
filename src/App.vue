@@ -1,7 +1,7 @@
 <template>
-  <recipe-list/>
+  <sign-up/>
 </template>
 
 <script setup>
-import RecipeList from './components/RecipeList.vue'
+import SignUp from './components/SignUp.vue'
 </script>
