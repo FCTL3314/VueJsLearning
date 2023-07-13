@@ -1,9 +1,8 @@
 <script setup>
 import RecipeCard from './RecipeCard.vue';
-import MyInput from './MyInput.vue';
+import MySearch from './MySearch.vue';
 import {ref} from 'vue';
 
-let searchQuery = ref('');
 const recipes = ref(
     [
       {
@@ -27,6 +26,10 @@ const recipes = ref(
     ],
 )
 
+const recipesSearch = (query) => {
+  console.log(`Загрузить товары: ${query}`)
+}
+
 const addToBasket = (index) => {
   console.log(index)
 }
@@ -35,10 +38,7 @@ const addToBasket = (index) => {
 <template>
   <div class="product-list">
     <h1>Рецепты:</h1>
-    <my-input v-model="searchQuery"/>
-    <input type="text" v-model="searchQuery">
-    {{ searchQuery }}
-    <button type="button">Find</button>
+    <my-search @search="recipesSearch"/>
     <ul class="list-default flex">
       <li
           v-for="(recipe, index) in recipes"
