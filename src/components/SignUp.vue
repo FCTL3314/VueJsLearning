@@ -1,6 +1,6 @@
 <script setup>
 import {reactive} from 'vue';
-import {required} from '@vuelidate/validators';
+import {required, helpers} from '@vuelidate/validators';
 import useVuelidate from "@vuelidate/core";
 
 const formData = reactive({
@@ -8,8 +8,16 @@ const formData = reactive({
   password: '',
 })
 
+const mustBeCool = helpers.withMessage(
+    'This field must contain cool.',
+    (value) => value.includes('cool'),
+)
+
+
 const rules = {
-  username: {required},
+  username: {
+    mustBeCool,
+  },
   password: {required},
 };
 
@@ -37,9 +45,9 @@ const submitForm = async () => {
             class="form-control"
             :class="v$.username.$error ? 'is-invalid' : ''"
         >
-        <span class="invalid-feedback" v-for="error in v$.username.$errors" :key="error.$uid">
+        <p class="invalid-feedback" v-for="error in v$.username.$errors" :key="error.$uid">
           {{ error.$message }}
-        </span>
+        </p>
       </div>
       <div class="mb-3">
         <label class="form-label" for="password">Password</label>
@@ -50,9 +58,9 @@ const submitForm = async () => {
             class="form-control"
             :class="v$.password.$error ? 'is-invalid' : ''"
         >
-        <span class="invalid-feedback" v-for="error in v$.password.$errors" :key="error.$uid">
+        <p class="invalid-feedback" v-for="error in v$.password.$errors" :key="error.$uid">
           {{ error.$message }}
-        </span>
+        </p>
       </div>
       <button class="btn btn-primary">Submit</button>
     </form>
