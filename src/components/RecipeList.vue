@@ -3,7 +3,7 @@ import RecipeCard from './RecipeCard.vue';
 import MyInput from './MyInput.vue';
 import {ref} from 'vue';
 
-let searchQuery = ref(0);
+let searchQuery = ref('');
 const recipes = ref(
     [
       {
