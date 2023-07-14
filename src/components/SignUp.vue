@@ -1,9 +1,12 @@
 <script setup>
 import {reactive, ref} from 'vue';
 import {required, maxLength, minLength, sameAs, helpers} from '@vuelidate/validators';
-import useVuelidate from "@vuelidate/core";
+import useVuelidate from '@vuelidate/core';
+import TermsModal from './TermsModal.vue';
 
 let isRegistered = ref(false);
+
+let isModalOpen = ref(false);
 
 const countries = [
   {
@@ -136,6 +139,32 @@ const submitForm = async () => {
       <button class="btn btn-primary">Submit</button>
     </form>
     <h2 v-else>You're successfully registered!</h2>
+    <terms-modal
+        v-if="isModalOpen"
+        @close="isModalOpen = false"
+    >
+      <p>
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consequuntur explicabo illo illum ipsam, quasi quo
+        similique! A consequuntur dolore earum est exercitationem hic illo impedit laborum necessitatibus nisi nostrum,
+        officia!
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consequuntur explicabo illo illum ipsam, quasi quo
+        similique! A consequuntur dolore earum est exercitationem hic illo impedit laborum necessitatibus nisi nostrum,
+        officia!
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consequuntur explicabo illo illum ipsam, quasi quo
+        similique! A consequuntur dolore earum est exercitationem hic illo impedit laborum necessitatibus nisi nostrum,
+        officia!
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consequuntur explicabo illo illum ipsam, quasi quo
+        similique! A consequuntur dolore earum est exercitationem hic illo impedit laborum necessitatibus nisi nostrum,
+        officia!
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consequuntur explicabo illo illum ipsam, quasi quo
+        similique! A consequuntur dolore earum est exercitationem hic illo impedit laborum necessitatibus nisi nostrum,
+        officia!
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consequuntur explicabo illo illum ipsam, quasi quo
+        similique! A consequuntur dolore earum est exercitationem hic illo impedit laborum necessitatibus nisi nostrum,
+        officia!
+      </p>
+    </terms-modal>
+    <button @click="isModalOpen = true" class="btn btn-primary">Show modal</button>
   </div>
 </template>
 
