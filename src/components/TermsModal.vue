@@ -1,5 +1,12 @@
 <script setup>
-import {ref} from 'vue';
+import {ref, defineProps} from 'vue';
+
+defineProps({
+  title: {
+    type: String,
+    default: 'Modal window',
+  }
+})
 
 let isRulesRead = ref(false)
 
@@ -17,7 +24,7 @@ function checkIfScrolledToBottom() {
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title">Modal title</h5>
+        <h5 class="modal-title">{{ title }}</h5>
         <button
             @click="$emit('close')"
             type="button"

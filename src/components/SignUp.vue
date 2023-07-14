@@ -142,6 +142,7 @@ const submitForm = async () => {
     <terms-modal
         v-if="isModalOpen"
         @close="isModalOpen = false"
+        title="Terms"
     >
       <p>
         Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consequuntur explicabo illo illum ipsam, quasi quo
