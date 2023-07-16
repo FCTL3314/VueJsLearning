@@ -1,5 +1,5 @@
 <script setup>
-import {ref, defineProps} from 'vue';
+import {ref, defineProps, onMounted} from 'vue';
 
 defineProps({
   title: {
@@ -11,6 +11,12 @@ defineProps({
 let isRulesRead = ref(false)
 
 const modalBody = ref(null)
+
+function scrollModalBodyToBottom() {
+  modalBody.value.scrollTop = modalBody.value.scrollHeight
+}
+
+onMounted(() => scrollModalBodyToBottom())
 
 function checkIfScrolledToBottom() {
   if (modalBody.value.clientHeight + modalBody.value.scrollTop >= modalBody.value.scrollHeight) {
